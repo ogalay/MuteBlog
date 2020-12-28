@@ -1,0 +1,1 @@
+web: gunicorn MUTE.wsgi --log-file -
