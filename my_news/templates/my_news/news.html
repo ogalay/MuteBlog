@@ -1,0 +1,22 @@
+{% extends 'articles/base.html' %}
+
+{% block title %}
+Новости
+{% endblock %}
+
+{% block articles %}
+    {% for n in all_news %}
+     <div class="w3-card-4 w3-margin w3-white">
+    <!-- <img src="/w3images/woods.jpg" alt="Nature" style="width:100%"> -->
+    <div class="w3-container">
+      <h3><a href="{{ n.link }}"><b>{{ n.title }} </b></a></h3>
+      <h5><span class="w3-opacity">{{ n.posted}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>{{ n.description }}</p>
+    </div>
+  </div>
+  <hr>
+    {% endfor %}
+{% endblock %}

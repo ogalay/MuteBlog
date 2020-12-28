@@ -1,0 +1,52 @@
+{% extends 'articles/base.html' %}
+
+
+{% block title %}
+{{ article.title }}
+{% endblock %}
+
+{% block articles %}
+     <div class="w3-card-4 w3-margin w3-white">
+    <!-- <img src="/w3images/woods.jpg" alt="Nature" style="width:100%"> -->
+    <div class="w3-container">
+      <h3><b>{{ article.title }} </b></h3>
+      <h5><span class="w3-opacity">{{ article.created}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>{{ article.description }}</p>
+      <div class="w3-row">
+        <div class="w3-col m8 s12">
+
+        </div>
+        {% if user.is_authenticated %}
+        <form action="{% url 'articles:reply' article.pk %}" method="post">
+        {% csrf_token %}
+        <label>
+        <textarea name="body" required="" placeholder="Текст комментария" cols="100" rows="3" style="
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-position: 10px 10px;
+         background-repeat: no-repeat;
+        padding-left: 25px;">
+        </textarea><br />
+        </label>
+            <p><button class="w3-button w3-padding-large w3-white w3-border" type="submit"><b>Оставить комментарий</b></button></p>
+        </form>
+        {% endif %}
+        <div class="w3-col m4 w3-hide-small">
+          <p><span class="w3-padding-large w3-left"><b>Комментарии</b> <span class="w3-tag">{{ article.num_post }}</span></span></p>
+            {% for post in posts %}
+            <div class="w3-container">
+                <h5><b>{{ post.body }} </b></h5>
+                <h6><span class="w3-opacity">{{ post.creator}}   {{ post.created }}</span></h6>
+            </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+{% endblock %}

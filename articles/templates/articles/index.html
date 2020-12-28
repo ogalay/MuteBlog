@@ -1,0 +1,27 @@
+{% extends 'articles/base.html' %}
+
+{% block title %}
+MUTE
+{% endblock %}
+
+{% block articles %}
+    {% for article in articles %}
+     <div class="w3-card-4 w3-margin w3-white">
+    <!-- <img src="/w3images/woods.jpg" alt="Nature" style="width:100%"> -->
+    <div class="w3-container">
+      <h3><a href="{% url 'articles:article' article.pk %}"><b>{{ article.title }} </b></a></h3>
+      <h5><span class="w3-opacity">{{ article.created}}</span></h5>
+    </div>
+
+    <div class="w3-container">
+      <p>{{ article.description }}</p>
+      <div class="w3-row">
+        <div class="w3-col m4 w3-hide-small">
+          <p><span><b>Комментарии</b> <span class="w3-tag">{{ article.num_post }}</span></span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'articles/base.html' %}
+
+{% block title %}
+Новый пост
+{% endblock %}
+
+{% block articles %}
+<div class="w3-card-4 w3-margin w3-white">
+    <!-- <img src="/w3images/woods.jpg" alt="Nature" style="width:100%"> -->
+    <div class="w3-container">
+        <h2>Новый пост</h2>
+        <form method="post">
+            {% csrf_token %}
+             {% for field in form %}
+                                <div class=""><p>{{ field.label }}</p></div>
+                                <div class=""><p>{{ field }}</p></div>
+            {% endfor %}
+
+        <button type="submit" name="button" class="w3-button w3-padding-large w3-white w3-border">Создать</button>
+        <p></p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+

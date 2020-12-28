@@ -1,0 +1,32 @@
+{% extends 'articles/base.html' %}
+
+{% block title %}
+Войти
+{% endblock %}
+
+{% block articles %}
+<div class="w3-card-4 w3-margin w3-white">
+    <!-- <img src="/w3images/woods.jpg" alt="Nature" style="width:100%"> -->
+    <div class="w3-container">
+        <h2>Войти</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class=" form-label-group"><p>Имя пользователя</p></div>
+            <div class=" form-label-group"><input type="text" name="username" class="form-control">
+            </div>
+            <div class=" form-label-group"><p>Пароль</p></div>
+            <div class=" form-label-group"><input type="password" name="password" class="form-control">
+            </div>
+            <div class="position-relative" style="left:110px">
+            <input type="submit" name="Create User" style="margin-top: 10px; width: 15%"
+                                       class="btn btn-primary btn-block">
+            </div>
+
+
+        </form>
+        <br>
+    </div>
+</div>
+
+
+{% endblock %}
